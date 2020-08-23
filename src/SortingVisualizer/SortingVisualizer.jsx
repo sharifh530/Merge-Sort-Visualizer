@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import array from "../data";
+import { getMergeSortAnimations } from "../sortingAlgorithms/mergeSortAlgo";
 
 import "./SortingVisualizer.css";
+
+const mergeSort = () => {};
 
 function SortingVisualizer() {
   const [updateArray, setUpdateArray] = useState(array);
@@ -18,7 +21,7 @@ function SortingVisualizer() {
       <button onClick={() => window.location.reload(false)}>
         Generate New Array
       </button>
-      <button>Merge Sort</button>
+      <button onClick={mergeSort}>Merge Sort</button>
       <button>Quick Sort</button>
       <button>Heap Sort</button>
       <button>Bubble Sort</button>
