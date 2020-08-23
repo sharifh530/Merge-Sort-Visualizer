@@ -50,9 +50,6 @@ function SortingVisualizer() {
           Generate New Array
         </button>
         <button onClick={mergeSort}>Merge Sort</button>
-        <button>Quick Sort</button>
-        <button>Heap Sort</button>
-        <button>Bubble Sort</button>
       </div>
       <div className="array-container">
         {updateArray.map((value, inx) => (
