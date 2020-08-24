@@ -4,6 +4,7 @@ import { getMergeSortAnimations } from "../sortingAlgorithms/mergeSortAlgo";
 import { getQuickSortAnimations } from "../sortingAlgorithms/quickSortAlgo";
 import { getBubbleSortAnimations } from "../sortingAlgorithms/bubbleSortAlgo";
 import { getInsertionSortAnimations } from "../sortingAlgorithms/insertionSortAlgo";
+import { getSelectionSortAnimations } from "../sortingAlgorithms/selectionSortAlgo";
 
 import "./SortingVisualizer.css";
 
