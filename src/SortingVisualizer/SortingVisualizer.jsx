@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import array from "../data";
+
+import Navbar from "../Navbar/Navbar";
+
 import { getMergeSortAnimations } from "../sortingAlgorithms/mergeSortAlgo";
 import { getQuickSortAnimations } from "../sortingAlgorithms/quickSortAlgo";
 import { getBubbleSortAnimations } from "../sortingAlgorithms/bubbleSortAlgo";
@@ -143,18 +146,18 @@ const insertionSort = () => {
   setTimeout(() => this.restoreStoreButtons(), RESTORE_TIME);
 };
 
+const selectionSort = () => {};
+
 function SortingVisualizer() {
   return (
     <div>
-      <div className="buttons">
-        <button onClick={() => window.location.reload(false)}>
-          Generate New Array
-        </button>
-        <button onClick={mergeSort}>Merge Sort</button>
-        <button onClick={quickSort}>Quick Sort</button>
-        <button onClick={insertionSort}>Insertion Sort</button>
-        <button onClick={bubbleSort}>Bubble Sort</button>
-      </div>
+      <Navbar
+        mergeSort={mergeSort}
+        quickSort={quickSort}
+        insertionSort={insertionSort}
+        bubbleSort={bubbleSort}
+        selectionSort={selectionSort}
+      />
       <div className="array-container">
         {array.map((value, inx) => (
           <div
