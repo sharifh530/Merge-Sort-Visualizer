@@ -146,7 +146,37 @@ const insertionSort = () => {
   setTimeout(() => this.restoreStoreButtons(), RESTORE_TIME);
 };
 
-const selectionSort = () => {};
+const selectionSort = () => {
+  const [animations, sortArray] = getSelectionSortAnimations(array);
+  for (let i = 0; i < animations.length; i++) {
+    const isColorChange =
+      animations[i][0] === "comparision1" ||
+      animations[i][0] === "comparision2";
+    const arrayBars = document.getElementsByClassName("array-bar");
+    if (isColorChange === true) {
+      const color =
+        animations[i][0] === "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
+      const [temp, barOneIndex, barTwoIndex] = animations[i];
+      const barOneStyle = arrayBars[barOneIndex].style;
+      const barTwoStyle = arrayBars[barTwoIndex].style;
+      setTimeout(() => {
+        barOneStyle.backgroundColor = color;
+        barTwoStyle.backgroundColor = color;
+      }, i * ANIMATION_SPEED_MS);
+    } else {
+      const [temp, barIndex, newHeight] = animations[i];
+      const barStyle = arrayBars[barIndex].style;
+      setTimeout(() => {
+        barStyle.height = `${newHeight}px`;
+      }, i * ANIMATION_SPEED_MS);
+    }
+  }
+  // this.setState({array: sortArray})
+  const RESTORE_TIME = parseInt(
+    (ANIMATION_SPEED_MS * animations.length) / 2 + 3000
+  );
+  setTimeout(() => this.restoreStoreButtons(), RESTORE_TIME);
+};
 
 function SortingVisualizer() {
   return (
