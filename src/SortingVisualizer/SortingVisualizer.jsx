@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import array from "../data";
 import { getMergeSortAnimations } from "../sortingAlgorithms/mergeSortAlgo";
 import { getQuickSortAnimations } from "../sortingAlgorithms/quickSortAlgo";
+import { getBubbleSortAnimations } from "../sortingAlgorithms/bubbleSortAlgo";
 
 import "./SortingVisualizer.css";
 
 // Change this value for the speed of the animations.
-const ANIMATION_SPEED_MS = 1;
+const ANIMATION_SPEED_MS = 2;
 
 // Change this value for the number of bars (value) in the array.
 const NUMBER_OF_ARRAY_BARS = 310;
@@ -74,6 +75,40 @@ const quickSort = () => {
   );
 };
 
+const bubbleSort = () => {
+  const [animations, sortArray] = getBubbleSortAnimations(array);
+  for (let i = 0; i < animations.length; i++) {
+    const isColorChange =
+      animations[i][0] == "comparision1" || animations[i][0] == "comparision2";
+    const arrayBars = document.getElementsByClassName("array-bar");
+    if (isColorChange === true) {
+      const color =
+        animations[i][0] == "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
+      const [comparision, barOneIndex, barTwoIndex] = animations[i];
+      const barOneStyle = arrayBars[barOneIndex].style;
+      const barTwoStyle = arrayBars[barTwoIndex].style;
+      setTimeout(() => {
+        barOneStyle.backgroundColor = color;
+        barTwoStyle.backgroundColor = color;
+      }, i * ANIMATION_SPEED_MS);
+    } else {
+      const [swap, barIndex, newHeight] = animations[i];
+      if (barIndex === -1) {
+        continue;
+      }
+      const barStyle = arrayBars[barIndex].style;
+      setTimeout(() => {
+        barStyle.height = `${newHeight}px`;
+      }, i * ANIMATION_SPEED_MS);
+    }
+  }
+  // this.setState({array: sortArray})
+  const RESTORE_TIME = parseInt(
+    (ANIMATION_SPEED_MS * animations.length) / 2 + 3000
+  );
+  setTimeout(() => this.restoreStoreButtons(), RESTORE_TIME);
+};
+
 function SortingVisualizer() {
   return (
     <div>
@@ -84,7 +119,7 @@ function SortingVisualizer() {
         <button onClick={mergeSort}>Merge Sort</button>
         <button onClick={quickSort}>Quick Sort</button>
         <button>Heap Sort</button>
-        <button>Bubble Sort</button>
+        <button onClick={bubbleSort}>Bubble Sort</button>
       </div>
       <div className="array-container">
         {array.map((value, inx) => (
