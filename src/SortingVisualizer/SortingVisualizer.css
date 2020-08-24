@@ -1,3 +1,7 @@
+.buttons {
+  padding: 5px;
+}
+
 .array-container {
   position: absolute;
   padding: 50px 50px;
@@ -8,4 +12,8 @@
   background-color: blue;
   display: inline-block;
   margin: 0 1px;
+}
+
+canvas {
+  display: block;
 }

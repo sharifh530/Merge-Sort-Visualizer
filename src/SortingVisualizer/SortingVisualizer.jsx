@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import array from "../data";
 import { getMergeSortAnimations } from "../sortingAlgorithms/mergeSortAlgo";
+import { getQuickSortAnimations } from "../sortingAlgorithms/quickSortAlgo";
 
 import "./SortingVisualizer.css";
 
@@ -40,19 +41,22 @@ const mergeSort = () => {
   }
 };
 
-function SortingVisualizer() {
-  const [updateArray, setUpdateArray] = useState(array);
+const quickSort = () => {};
 
+function SortingVisualizer() {
   return (
     <div>
-      <div>
+      <div className="buttons">
         <button onClick={() => window.location.reload(false)}>
           Generate New Array
         </button>
         <button onClick={mergeSort}>Merge Sort</button>
+        <button onClick={quickSort}>Quick Sort</button>
+        <button>Heap Sort</button>
+        <button>Bubble Sort</button>
       </div>
       <div className="array-container">
-        {updateArray.map((value, inx) => (
+        {array.map((value, inx) => (
           <div
             className="array-bar"
             key={inx}
