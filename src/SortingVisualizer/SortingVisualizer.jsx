@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import array from "../data";
 
 import Navbar from "../Navbar/Navbar";
@@ -13,9 +13,6 @@ import "./SortingVisualizer.css";
 
 // Change this value for the speed of the animations.
 const ANIMATION_SPEED_MS = 5;
-
-// Change this value for the number of bars (value) in the array.
-const NUMBER_OF_ARRAY_BARS = 310;
 
 // This is the main color of the array bars.
 const PRIMARY_COLOR = "#f7d1ba";
@@ -48,15 +45,16 @@ const mergeSort = () => {
 };
 
 const quickSort = () => {
-  const [animations, sortArray] = getQuickSortAnimations(array);
+  const [animations] = getQuickSortAnimations(array);
   for (let i = 0; i < animations.length; i++) {
     const isColorChange =
-      animations[i][0] == "comparision1" || animations[i][0] == "comparision2";
+      animations[i][0] === "comparision1" ||
+      animations[i][0] === "comparision2";
     const arrayBars = document.getElementsByClassName("array-bar");
     if (isColorChange === true) {
       const color =
-        animations[i][0] == "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
-      const [comparision, barOneIndex, barTwoIndex] = animations[i];
+        animations[i][0] === "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
+      const [barOneIndex, barTwoIndex] = animations[i];
       const barOneStyle = arrayBars[barOneIndex].style;
       const barTwoStyle = arrayBars[barTwoIndex].style;
       setTimeout(() => {
@@ -64,7 +62,7 @@ const quickSort = () => {
         barTwoStyle.backgroundColor = color;
       }, i * ANIMATION_SPEED_MS);
     } else {
-      const [swap, barIndex, newHeight] = animations[i];
+      const [barIndex, newHeight] = animations[i];
       if (barIndex === -1) {
         continue;
       }
@@ -74,22 +72,19 @@ const quickSort = () => {
       }, i * ANIMATION_SPEED_MS);
     }
   }
-  // this.setState({array: sortArray})
-  const RESTORE_TIME = parseInt(
-    (ANIMATION_SPEED_MS * animations.length) / 2 + 3000
-  );
 };
 
 const bubbleSort = () => {
-  const [animations, sortArray] = getBubbleSortAnimations(array);
+  const [animations] = getBubbleSortAnimations(array);
   for (let i = 0; i < animations.length; i++) {
     const isColorChange =
-      animations[i][0] == "comparision1" || animations[i][0] == "comparision2";
+      animations[i][0] === "comparision1" ||
+      animations[i][0] === "comparision2";
     const arrayBars = document.getElementsByClassName("array-bar");
     if (isColorChange === true) {
       const color =
-        animations[i][0] == "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
-      const [comparision, barOneIndex, barTwoIndex] = animations[i];
+        animations[i][0] === "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
+      const [barOneIndex, barTwoIndex] = animations[i];
       const barOneStyle = arrayBars[barOneIndex].style;
       const barTwoStyle = arrayBars[barTwoIndex].style;
       setTimeout(() => {
@@ -97,7 +92,7 @@ const bubbleSort = () => {
         barTwoStyle.backgroundColor = color;
       }, i * ANIMATION_SPEED_MS);
     } else {
-      const [swap, barIndex, newHeight] = animations[i];
+      const [barIndex, newHeight] = animations[i];
       if (barIndex === -1) {
         continue;
       }
@@ -107,14 +102,10 @@ const bubbleSort = () => {
       }, i * ANIMATION_SPEED_MS);
     }
   }
-  // this.setState({array: sortArray})
-  const RESTORE_TIME = parseInt(
-    (ANIMATION_SPEED_MS * animations.length) / 2 + 3000
-  );
 };
 
 const insertionSort = () => {
-  const [animations, sortArray] = getInsertionSortAnimations(array);
+  const [animations] = getInsertionSortAnimations(array);
   for (let i = 0; i < animations.length; i++) {
     const isColorChange =
       animations[i][0] === "comparision1" ||
@@ -123,7 +114,7 @@ const insertionSort = () => {
     if (isColorChange === true) {
       const color =
         animations[i][0] === "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
-      const [temp, barOneIndex, barTwoIndex] = animations[i];
+      const [barOneIndex, barTwoIndex] = animations[i];
       const barOneStyle = arrayBars[barOneIndex].style;
       const barTwoStyle = arrayBars[barTwoIndex].style;
       setTimeout(() => {
@@ -131,21 +122,17 @@ const insertionSort = () => {
         barTwoStyle.backgroundColor = color;
       }, i * ANIMATION_SPEED_MS);
     } else {
-      const [temp, barIndex, newHeight] = animations[i];
+      const [barIndex, newHeight] = animations[i];
       const barStyle = arrayBars[barIndex].style;
       setTimeout(() => {
         barStyle.height = `${newHeight}px`;
       }, i * ANIMATION_SPEED_MS);
     }
   }
-  // this.setState({array: sortArray})
-  const RESTORE_TIME = parseInt(
-    (ANIMATION_SPEED_MS * animations.length) / 2 + 3000
-  );
 };
 
 const selectionSort = () => {
-  const [animations, sortArray] = getSelectionSortAnimations(array);
+  const [animations] = getSelectionSortAnimations(array);
   for (let i = 0; i < animations.length; i++) {
     const isColorChange =
       animations[i][0] === "comparision1" ||
@@ -154,7 +141,7 @@ const selectionSort = () => {
     if (isColorChange === true) {
       const color =
         animations[i][0] === "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
-      const [temp, barOneIndex, barTwoIndex] = animations[i];
+      const [barOneIndex, barTwoIndex] = animations[i];
       const barOneStyle = arrayBars[barOneIndex].style;
       const barTwoStyle = arrayBars[barTwoIndex].style;
       setTimeout(() => {
@@ -162,17 +149,13 @@ const selectionSort = () => {
         barTwoStyle.backgroundColor = color;
       }, i * ANIMATION_SPEED_MS);
     } else {
-      const [temp, barIndex, newHeight] = animations[i];
+      const [barIndex, newHeight] = animations[i];
       const barStyle = arrayBars[barIndex].style;
       setTimeout(() => {
         barStyle.height = `${newHeight}px`;
       }, i * ANIMATION_SPEED_MS);
     }
   }
-  // this.setState({array: sortArray})
-  const RESTORE_TIME = parseInt(
-    (ANIMATION_SPEED_MS * animations.length) / 2 + 3000
-  );
 };
 
 function SortingVisualizer() {
