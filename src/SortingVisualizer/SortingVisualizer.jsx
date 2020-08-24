@@ -118,7 +118,7 @@ function SortingVisualizer() {
         </button>
         <button onClick={mergeSort}>Merge Sort</button>
         <button onClick={quickSort}>Quick Sort</button>
-        <button>Heap Sort</button>
+        <button>Insertion Sort</button>
         <button onClick={bubbleSort}>Bubble Sort</button>
       </div>
       <div className="array-container">
