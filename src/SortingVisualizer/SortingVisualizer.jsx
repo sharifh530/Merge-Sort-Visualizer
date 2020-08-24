@@ -41,7 +41,38 @@ const mergeSort = () => {
   }
 };
 
-const quickSort = () => {};
+const quickSort = () => {
+  const [animations, sortArray] = getQuickSortAnimations(array);
+  for (let i = 0; i < animations.length; i++) {
+    const isColorChange =
+      animations[i][0] == "comparision1" || animations[i][0] == "comparision2";
+    const arrayBars = document.getElementsByClassName("array-bar");
+    if (isColorChange === true) {
+      const color =
+        animations[i][0] == "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
+      const [comparision, barOneIndex, barTwoIndex] = animations[i];
+      const barOneStyle = arrayBars[barOneIndex].style;
+      const barTwoStyle = arrayBars[barTwoIndex].style;
+      setTimeout(() => {
+        barOneStyle.backgroundColor = color;
+        barTwoStyle.backgroundColor = color;
+      }, i * ANIMATION_SPEED_MS);
+    } else {
+      const [swap, barIndex, newHeight] = animations[i];
+      if (barIndex === -1) {
+        continue;
+      }
+      const barStyle = arrayBars[barIndex].style;
+      setTimeout(() => {
+        barStyle.height = `${newHeight}px`;
+      }, i * ANIMATION_SPEED_MS);
+    }
+  }
+  // this.setState({array: sortArray})
+  const RESTORE_TIME = parseInt(
+    (ANIMATION_SPEED_MS * animations.length) / 2 + 3000
+  );
+};
 
 function SortingVisualizer() {
   return (
