@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Navbar.css";
+
 function Navbar({
   mergeSort,
   quickSort,
@@ -8,11 +10,13 @@ function Navbar({
   selectionSort,
 }) {
   return (
-    <div>
-      <div className="buttons">
+    <div className="navbar">
+      <div className="generate-array">
         <button onClick={() => window.location.reload(false)}>
           Generate New Array
         </button>
+      </div>
+      <div className="buttons">
         <button onClick={mergeSort}>Merge Sort</button>
         <button onClick={quickSort}>Quick Sort</button>
         <button onClick={insertionSort}>Insertion Sort</button>

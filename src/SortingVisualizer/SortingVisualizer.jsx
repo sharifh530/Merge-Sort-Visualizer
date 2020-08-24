@@ -12,13 +12,13 @@ import { getSelectionSortAnimations } from "../sortingAlgorithms/selectionSortAl
 import "./SortingVisualizer.css";
 
 // Change this value for the speed of the animations.
-const ANIMATION_SPEED_MS = 2;
+const ANIMATION_SPEED_MS = 5;
 
 // Change this value for the number of bars (value) in the array.
 const NUMBER_OF_ARRAY_BARS = 310;
 
 // This is the main color of the array bars.
-const PRIMARY_COLOR = "turquoise";
+const PRIMARY_COLOR = "#f7d1ba";
 
 // This is the color of array bars that are being compared throughout the animations.
 const SECONDARY_COLOR = "red";
@@ -111,7 +111,6 @@ const bubbleSort = () => {
   const RESTORE_TIME = parseInt(
     (ANIMATION_SPEED_MS * animations.length) / 2 + 3000
   );
-  setTimeout(() => this.restoreStoreButtons(), RESTORE_TIME);
 };
 
 const insertionSort = () => {
@@ -143,7 +142,6 @@ const insertionSort = () => {
   const RESTORE_TIME = parseInt(
     (ANIMATION_SPEED_MS * animations.length) / 2 + 3000
   );
-  setTimeout(() => this.restoreStoreButtons(), RESTORE_TIME);
 };
 
 const selectionSort = () => {
@@ -175,7 +173,6 @@ const selectionSort = () => {
   const RESTORE_TIME = parseInt(
     (ANIMATION_SPEED_MS * animations.length) / 2 + 3000
   );
-  setTimeout(() => this.restoreStoreButtons(), RESTORE_TIME);
 };
 
 function SortingVisualizer() {
@@ -188,14 +185,16 @@ function SortingVisualizer() {
         bubbleSort={bubbleSort}
         selectionSort={selectionSort}
       />
-      <div className="array-container">
-        {array.map((value, inx) => (
-          <div
-            className="array-bar"
-            key={inx}
-            style={{ height: `${value}px` }}
-          ></div>
-        ))}
+      <div className="main">
+        <div className="array-container">
+          {array.map((value, inx) => (
+            <div
+              className="array-bar"
+              key={inx}
+              style={{ height: `${value}px` }}
+            ></div>
+          ))}
+        </div>
       </div>
     </div>
   );
