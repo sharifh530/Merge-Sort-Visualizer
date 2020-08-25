@@ -45,16 +45,15 @@ const mergeSort = () => {
 };
 
 const quickSort = () => {
-  const [animations] = getQuickSortAnimations(array);
+  const [animations, sortArray] = getQuickSortAnimations(array);
   for (let i = 0; i < animations.length; i++) {
     const isColorChange =
-      animations[i][0] === "comparision1" ||
-      animations[i][0] === "comparision2";
+      animations[i][0] == "comparision1" || animations[i][0] == "comparision2";
     const arrayBars = document.getElementsByClassName("array-bar");
     if (isColorChange === true) {
       const color =
-        animations[i][0] === "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
-      const [barOneIndex, barTwoIndex] = animations[i];
+        animations[i][0] == "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
+      const [comparision, barOneIndex, barTwoIndex] = animations[i];
       const barOneStyle = arrayBars[barOneIndex].style;
       const barTwoStyle = arrayBars[barTwoIndex].style;
       setTimeout(() => {
@@ -62,7 +61,7 @@ const quickSort = () => {
         barTwoStyle.backgroundColor = color;
       }, i * ANIMATION_SPEED_MS);
     } else {
-      const [barIndex, newHeight] = animations[i];
+      const [swap, barIndex, newHeight] = animations[i];
       if (barIndex === -1) {
         continue;
       }
@@ -75,16 +74,15 @@ const quickSort = () => {
 };
 
 const bubbleSort = () => {
-  const [animations] = getBubbleSortAnimations(array);
+  const [animations, sortArray] = getBubbleSortAnimations(array);
   for (let i = 0; i < animations.length; i++) {
     const isColorChange =
-      animations[i][0] === "comparision1" ||
-      animations[i][0] === "comparision2";
+      animations[i][0] == "comparision1" || animations[i][0] == "comparision2";
     const arrayBars = document.getElementsByClassName("array-bar");
     if (isColorChange === true) {
       const color =
-        animations[i][0] === "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
-      const [barOneIndex, barTwoIndex] = animations[i];
+        animations[i][0] == "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
+      const [comparision, barOneIndex, barTwoIndex] = animations[i];
       const barOneStyle = arrayBars[barOneIndex].style;
       const barTwoStyle = arrayBars[barTwoIndex].style;
       setTimeout(() => {
@@ -92,7 +90,7 @@ const bubbleSort = () => {
         barTwoStyle.backgroundColor = color;
       }, i * ANIMATION_SPEED_MS);
     } else {
-      const [barIndex, newHeight] = animations[i];
+      const [swap, barIndex, newHeight] = animations[i];
       if (barIndex === -1) {
         continue;
       }
@@ -105,7 +103,7 @@ const bubbleSort = () => {
 };
 
 const insertionSort = () => {
-  const [animations] = getInsertionSortAnimations(array);
+  const [animations, sortArray] = getInsertionSortAnimations(array);
   for (let i = 0; i < animations.length; i++) {
     const isColorChange =
       animations[i][0] === "comparision1" ||
@@ -114,7 +112,7 @@ const insertionSort = () => {
     if (isColorChange === true) {
       const color =
         animations[i][0] === "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
-      const [barOneIndex, barTwoIndex] = animations[i];
+      const [temp, barOneIndex, barTwoIndex] = animations[i];
       const barOneStyle = arrayBars[barOneIndex].style;
       const barTwoStyle = arrayBars[barTwoIndex].style;
       setTimeout(() => {
@@ -122,7 +120,7 @@ const insertionSort = () => {
         barTwoStyle.backgroundColor = color;
       }, i * ANIMATION_SPEED_MS);
     } else {
-      const [barIndex, newHeight] = animations[i];
+      const [temp, barIndex, newHeight] = animations[i];
       const barStyle = arrayBars[barIndex].style;
       setTimeout(() => {
         barStyle.height = `${newHeight}px`;
@@ -132,7 +130,7 @@ const insertionSort = () => {
 };
 
 const selectionSort = () => {
-  const [animations] = getSelectionSortAnimations(array);
+  const [animations, sortArray] = getSelectionSortAnimations(array);
   for (let i = 0; i < animations.length; i++) {
     const isColorChange =
       animations[i][0] === "comparision1" ||
@@ -141,7 +139,7 @@ const selectionSort = () => {
     if (isColorChange === true) {
       const color =
         animations[i][0] === "comparision1" ? SECONDARY_COLOR : PRIMARY_COLOR;
-      const [barOneIndex, barTwoIndex] = animations[i];
+      const [temp, barOneIndex, barTwoIndex] = animations[i];
       const barOneStyle = arrayBars[barOneIndex].style;
       const barTwoStyle = arrayBars[barTwoIndex].style;
       setTimeout(() => {
@@ -149,7 +147,7 @@ const selectionSort = () => {
         barTwoStyle.backgroundColor = color;
       }, i * ANIMATION_SPEED_MS);
     } else {
-      const [barIndex, newHeight] = animations[i];
+      const [temp, barIndex, newHeight] = animations[i];
       const barStyle = arrayBars[barIndex].style;
       setTimeout(() => {
         barStyle.height = `${newHeight}px`;
