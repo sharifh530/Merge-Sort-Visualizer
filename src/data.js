@@ -5,7 +5,7 @@ const randomNumber = (min, max) => {
 const array = [];
 
 for (let i = 0; i < 70; i++) {
-  array.push(randomNumber(5, 450));
+  array.push(randomNumber(50, 450));
 }
 
 export default array;
